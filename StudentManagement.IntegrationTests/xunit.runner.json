@@ -1,0 +1,6 @@
+{
+  "shadowCopy": false
+    // tests will execute in a different directory than the
+  // build output, we can have problems when reading from appsettings.json 
+  // as it wont be available in the built files
+}

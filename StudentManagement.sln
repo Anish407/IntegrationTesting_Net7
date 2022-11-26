@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32728.150
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentManagement.API", "StudentManagement.API\StudentManagement.API.csproj", "{2CC7E64F-B3D5-4B92-9EFD-881409FEF47C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentManagement.IntegrationTests", "StudentManagement.IntegrationTests\StudentManagement.IntegrationTests.csproj", "{535F041C-E744-43A1-92F2-D1A46C32A58A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2CC7E64F-B3D5-4B92-9EFD-881409FEF47C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2CC7E64F-B3D5-4B92-9EFD-881409FEF47C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2CC7E64F-B3D5-4B92-9EFD-881409FEF47C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2CC7E64F-B3D5-4B92-9EFD-881409FEF47C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{535F041C-E744-43A1-92F2-D1A46C32A58A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{535F041C-E744-43A1-92F2-D1A46C32A58A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{535F041C-E744-43A1-92F2-D1A46C32A58A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{535F041C-E744-43A1-92F2-D1A46C32A58A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DAF2DBD2-3589-4106-A959-5C31A15CAD53}
+	EndGlobalSection
+EndGlobal
