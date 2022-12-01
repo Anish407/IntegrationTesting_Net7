@@ -1,12 +1,15 @@
 ﻿using Microsoft.Azure.Cosmos;
+using Microsoft.Azure.Cosmos.Linq;
+using StudentManagement.Core.Entities;
 using StudentManagement.Infra.Common.Helpers;
 using StudentManagement.Infra.Interfaces.cosmos;
-using StudentManagement.Infra.Models;
+using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace StudentManagement.Infra.cosmos
 {
     public abstract class CosmosRepository<TItem> : IRepository<TItem>
-        where TItem : IDocument
+        where TItem :  IDocument
     {
         public abstract string DatabaseId { get; }
 
@@ -23,6 +26,28 @@ namespace StudentManagement.Infra.cosmos
         }
 
         public CosmosClient CosmosClient { get; }
+
+        public IQueryable<TItem> GetQueryable()
+        {
+            return Container.GetItemLinqQueryable<TItem>();
+        }
+
+        public async Task<IEnumerable<TItem>> ExecuteQueryabe(IQueryable<TItem> queryableEntity)
+        {
+            IList<TItem> result= new List<TItem>();
+            using FeedIterator<TItem> linqFeed = queryableEntity.ToFeedIterator();
+            while (linqFeed.HasMoreResults)
+            {
+                FeedResponse<TItem> response = await linqFeed.ReadNextAsync();
+
+                // Iterate query results
+                foreach (TItem item in response)
+                {
+                    result.Add(item);
+                }
+            }
+            return result;
+        }
 
         public async ValueTask<TItem> GetItem(string id, string partitionKeyValue = "", CancellationToken cancellationToken = default)
         => await GetItem(id, new PartitionKey(partitionKeyValue ?? id), cancellationToken);

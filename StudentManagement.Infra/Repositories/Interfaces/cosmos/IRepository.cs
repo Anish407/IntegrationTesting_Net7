@@ -1,10 +1,10 @@
 ﻿using Microsoft.Azure.Cosmos;
-using StudentManagement.Infra.Models;
+using StudentManagement.Core.Entities;
 
 namespace StudentManagement.Infra.Interfaces.cosmos
 {
     public interface IRepository<TItem>
-           where TItem : IDocument
+           where TItem :  IDocument
     {
         ValueTask<TItem> GetItem(string id, string partitionKeyValue = "", CancellationToken cancellationToken = default);
 
@@ -19,5 +19,9 @@ namespace StudentManagement.Infra.Interfaces.cosmos
         ValueTask<bool> Delete(string id, PartitionKey partitionKey = default, CancellationToken cancellationToken = default);
 
         Task<TransactionalBatchResponse> ExecuteTransaction(TransactionalBatch batch);
+
+        IQueryable<TItem> GetQueryable();
+
+        Task<IEnumerable<TItem>> ExecuteQueryabe(IQueryable<TItem> queryableEntity);
     }
 }
