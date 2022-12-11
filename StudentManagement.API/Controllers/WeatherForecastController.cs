@@ -16,6 +16,7 @@ namespace StudentManagement.API.Controllers
         public WeatherForecastController(ILogger<WeatherForecastController> logger)
         {
             _logger = logger;
+            
         }
 
         [HttpGet(Name = "GetWeatherForecast")]

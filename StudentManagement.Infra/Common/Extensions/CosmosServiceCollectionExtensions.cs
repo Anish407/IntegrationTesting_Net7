@@ -15,10 +15,5 @@ namespace StudentManagement.Infra.Common.Extensions
         {
             return services.AddSingleton(new CosmosClient(configuration["accountEndpoint"], configuration["accountKey"]));
         }
-
-        public static IServiceCollection RegisterRepositories(this IServiceCollection services)
-        {
-            return services;
-        }
     }
 }

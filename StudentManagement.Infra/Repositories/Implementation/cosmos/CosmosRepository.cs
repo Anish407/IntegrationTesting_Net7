@@ -90,7 +90,7 @@ namespace StudentManagement.Infra.cosmos
             return await _wrapper.TryCatch(async () =>
             {
                 ItemResponse<TItem> response =
-                 await Container.CreateItemAsync(value, new PartitionKey(value.PartitionKey), cancellationToken: cancellationToken);
+                 await Container.CreateItemAsync(value, new PartitionKey(value.PartitionKey()), cancellationToken: cancellationToken);
 
                 return response.Resource;
             });
@@ -118,7 +118,7 @@ namespace StudentManagement.Infra.cosmos
             return await _wrapper.TryCatch(async () =>
             {
                 ItemResponse<TItem> response =
-                await Container.UpsertItemAsync(value, new PartitionKey(value.PartitionKey), cancellationToken: cancellationToken);
+                await Container.UpsertItemAsync(value, new PartitionKey(value.PartitionKey()), cancellationToken: cancellationToken);
 
                 return response.Resource;
             });
