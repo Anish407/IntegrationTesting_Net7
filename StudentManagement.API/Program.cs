@@ -1,3 +1,4 @@
+using GraphQL.Server.Ui.Voyager;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using StudentManagement.API.Data;
@@ -40,6 +41,12 @@ app.MapControllers();
 
 //https://localhost:7155/graphql/ --> we get a UI like swagger
 app.MapGraphQL("/graphql");
+
+// add voyager -- UI that shows a more descriptive version of the query
+app.MapGraphQLVoyager(pattern: "api/graphqlvoyager", new VoyagerOptions
+{
+    GraphQLEndPoint="/graphql"
+});
 
 app.Run();
 public partial class Program { }
