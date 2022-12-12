@@ -11,13 +11,18 @@ var config = builder.Configuration;
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddDbContextPool<NorthwindContext>
+// if we call the graphql query may times,
+// then the parallel operation cannot be handled properly and we get the below error
+//"A second operation was started on this context instance before a previous operation completed. " 
+//"This is usually caused by different threads concurrently
+//using the same instance of DbContext. 
+builder.Services.AddPooledDbContextFactory<NorthwindContext>
     (op => op.UseSqlServer(config.GetConnectionString("NorthwindContext")));
 
 // graphql
 builder.Services
     .AddGraphQLServer()
-    .AddQueryType<Queries>();
+    .AddQueryType<Queries>().AddFiltering().AddSorting();
 
 builder.Services.AddSwaggerGen();
 builder.Services.AddHealthChecks()
