@@ -1,5 +1,6 @@
 ﻿using StudentManagement.API.Data;
 using StudentManagement.API.Models;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace StudentManagement.Infra.GraphQl.Sql.Queries
 {
@@ -21,6 +22,7 @@ namespace StudentManagement.Infra.GraphQl.Sql.Queries
         //    }
         //}
         [UseDbContext(typeof(NorthwindContext))]
+        [UseProjection] // fetch child objects
         public IQueryable<Customer> GetCustomers([ScopedService] NorthwindContext context)
             => context.Customers;
     }

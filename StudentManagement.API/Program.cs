@@ -16,13 +16,18 @@ builder.Services.AddEndpointsApiExplorer();
 //"A second operation was started on this context instance before a previous operation completed. " 
 //"This is usually caused by different threads concurrently
 //using the same instance of DbContext. 
+//https://chillicream.com/docs/hotchocolate/v11/integrations/entity-framework
 builder.Services.AddPooledDbContextFactory<NorthwindContext>
     (op => op.UseSqlServer(config.GetConnectionString("NorthwindContext")));
 
 // graphql
 builder.Services
     .AddGraphQLServer()
-    .AddQueryType<Queries>().AddFiltering().AddSorting();
+    .AddQueryType<Queries>()
+    .AddProjections() // fetch child objects customer -> orders
+    //.AddFiltering()
+    //.AddSorting()
+    ;
 
 builder.Services.AddSwaggerGen();
 builder.Services.AddHealthChecks()

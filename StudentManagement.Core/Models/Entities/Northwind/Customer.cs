@@ -31,7 +31,8 @@ public partial class Customer
 
     public virtual ICollection<Customer> InverseParentCompany { get; } = new List<Customer>();
 
-    public virtual ICollection<Order> Orders { get; } = new List<Order>();
+    // need to add a public setter inorder to use projections
+    public virtual ICollection<Order> Orders { get; set; } = new List<Order>();
 
     public virtual Customer? ParentCompany { get; set; }
 }
