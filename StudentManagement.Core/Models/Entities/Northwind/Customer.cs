@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 namespace StudentManagement.API.Models;
 
+
 public partial class Customer
 {
     public string CustomerId { get; set; } = null!;

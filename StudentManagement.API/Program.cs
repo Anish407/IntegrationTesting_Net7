@@ -23,6 +23,7 @@ builder.Services.AddPooledDbContextFactory<NorthwindContext>
 // graphql
 builder.Services
     .AddGraphQLServer()
+    .AddAuthorization()
     .AddQueryType<Queries>()
     .AddProjections() // fetch child objects customer -> orders
     //.AddFiltering()
